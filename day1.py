@@ -11,27 +11,25 @@ with open('inputDay1') as f:
 	for line in lines:
 		array = np.fromstring(line, dtype=int, sep=',')
 
-#array = np.array([1,1,2,2,3,4,1])
-array = np.append(array,array[0])
+#array = np.array([1,2,3,4,5,1,2,8,9,9])
+#array = np.array([1,2,1,2])
 arraysize = array.size
+halfArrayIndex = int(arraysize/2-1)
 
 def calculate( index ):
-#	print(index)
 	global sum;
-	#global array;
 	if arraysize == index :
-		return;
+		return array[halfArrayIndex];
 	number = array[index]
-	#restOfArray = np.delete(restOfArray,0)
-	#print(restOfArray)
-	if number == calculate(index+1):
+	nextval = calculate(index+1)
+	if number == nextval:
 		sum = sum + number
-	return number;
+	compareTo = index + halfArrayIndex
+	return array[compareTo%arraysize]
 
-#print(array)
 calculate(0)
 
-print(sum)
+print("sum: " + str(sum))
 
 
 
