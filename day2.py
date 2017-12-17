@@ -7,12 +7,18 @@ sys.setrecursionlimit(10**6)
 
 def main(inputText):
 	global result;
-	result = 0
+	result = int(0)
 
 	for array in inputText:
 		array = array.replace('\t', ' ');
 		array = list(map(lambda x : int(x), array.split(' ')))
-		result += (np.amax(array)-np.amin(array))
+		for currentPos,currentVal in enumerate(array):
+			for nextPos,nextVal in enumerate(array):
+				if( currentVal%nextVal == 0 and (currentPos != nextPos)):
+					result += int(currentVal/nextVal)
+				pass
+			pass
+		pass
 	pass
 
 def getResult():

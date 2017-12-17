@@ -7,16 +7,9 @@ import day2
 class testDay2(unittest.TestCase):
 
 	def test_example(self):
-		array =["5 1 9 5","7 5 3","2 4 6 8"]
+		array =["5 9 2 8","9 4 7 3","3 8 6 5"]
 		day2.main(array)
-		self.assertEqual(day2.getResult(), 18)
-
-	def test_read_from_bad_text(self):
-		badText = "1 2\t3 4"
-		badText = badText.replace('\t', ' ')
-		self.assertEqual(badText, "1 2 3 4")
-		goodArray = np.fromstring(badText, dtype=int, sep=' ')
-		self.assertEqual(goodArray.all(), np.array([1,2,3,4]).all())
+		self.assertEqual(day2.getResult(), 9)
 
 	def test_real(self):
 		with open('inputDay2') as f:
